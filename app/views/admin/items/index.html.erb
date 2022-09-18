@@ -1,0 +1,52 @@
+<main>
+ <p id = "notice"></p>
+ <div class = "container">
+  <div class = "row">
+    <h4>商品一覧</h4>
+    <%= link_to new_admin_item_path, class: 'btn btn-outline-dark rounded-circle p-10 ml-auto' do %>
+    +
+    <% end %>
+  </div>
+
+  <div class = "row">
+   <div class = "col-sm-12 cd-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+  <table>
+    <thead>
+      <tr>
+        <th>商品ID</th>
+
+        <th>商品名</th>
+
+        <th>税抜価格</th>
+
+        <th>ジャンル</th>
+
+        <th>ステータス</th>
+
+        <th colspan="5"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @items.each do |f| %>
+      <tr>
+
+        <td><%= f.id %></td>
+
+        <td><%= f.name %></td>
+
+        <td><%= f.price %></td>
+
+        <td><%= f.jenre.id %></td>
+
+        <td><%= f.is_active %></td>
+
+      </tr>
+      <% end %>
+     </tbody>
+    </table>
+   </div>
+  </div>
+ </div>
+</main>

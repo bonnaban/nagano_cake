@@ -1,0 +1,47 @@
+<body>
+  <p id="notice"></p>
+  <h4>注文履歴一覧</h4>
+  
+ <div class = "container">
+   <div class = "row">
+    <div class = "col-sm-12 cd-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      
+   <table>
+    <thead>
+      <tr>
+        <th>購入日時</th>
+
+        <th>購入者</th>
+
+        <th>注文個数</th>
+
+        <th>注文ステータス</th>
+
+        <th colspan="4"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @orders.each do |f| %>
+      <tr>
+        
+        <td><%= f.created_at %></td>
+        
+        <td><%= f.customer.last_name + f.customer.first_name %></td>
+
+        <% @sum = 0 %>
+        <% f.order_details.each do |order_detail| %>
+        <td><% @sum = @sum + order_detail.amount %></td>
+        <% end %>
+        <%= @sum %>
+        
+        <td><%= f.status %></td>
+        
+      </tr>
+      <% end %>
+     </tbody>
+    </table>
+   </div>
+  </div>
+ </div>
+</body>
