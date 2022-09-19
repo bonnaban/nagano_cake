@@ -40,7 +40,7 @@
       <div class = "row">
         <label class = "col-sm-3">ジャンル</label>
         <div class = "col-sm-9">
-         <%= f.collection_select :name, Genre.all, :genre_id, :name, prompt: "選択して下さい" %>
+         <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "選択して下さい" %>
         </div>
       </div>
 
@@ -54,10 +54,10 @@
       <div class = "row">
        <label class = "col-sm-3">販売ステータス</label>
        <div class = "col-sm-9">
-        <%= f.radio_button :is_active, id:"is_active" %>
+        <%= f.radio_button :is_active, :true %>
         <%= f.label :is_active, "販売中", {style: "display: inline-block;"} %>
 
-        <%= f.radio_button :is_active, id:"is_active" %>
+        <%= f.radio_button :is_active, :false %>
         <%= f.label :is_active, "販売停止中", {style: "display: inline-block;"} %>
        </div>
       </div>

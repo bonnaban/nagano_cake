@@ -9,5 +9,4 @@ class Item < ApplicationRecord
   validates :introduction, presence: true
   validates :genre, presence: true
   validates :price, presence: true
-  validates :is_active, presence: true
 end

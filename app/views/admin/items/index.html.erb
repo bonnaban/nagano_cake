@@ -34,13 +34,21 @@
 
         <td><%= f.id %></td>
 
-        <td><%= f.name %></td>
+        <td>
+          <%= link_to admin_item_path(@items) do %>
+          <%= f.name %>
+          <% end %>
+        </td>
 
         <td><%= f.price %></td>
 
-        <td><%= f.jenre.id %></td>
+        <td><%= f.genre.name %></td>
 
-        <td><%= f.is_active %></td>
+        <td>
+         <% if f.is_active %>販売中
+         <% else %>販売停止中
+         <% end %>
+        </td>
 
       </tr>
       <% end %>

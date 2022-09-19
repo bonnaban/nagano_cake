@@ -1,18 +1,57 @@
 <main>
-  <h2>商品詳細</h2>
+  <h4>商品詳細</h4>
    <p id = "notice"></p>
     <div class = "container">
      <div class = "row">
       <div class = "col-sm-12 cd-8 col-lg-5 px-5 px-sm-0 mx-auto">
 
+       <%= image_tag @item.image, :size =>'250x200' %>
 
+       <div class = "row">
+        <label class = "col-sm-3">商品名</label>
+        <div class = "col-sm-9">
+         <%= @item.name %>
+        </div>
+       </div>
 
+       <div class = "row">
+        <label class = "col-sm-3">商品説明</label>
+        <div class = "col-sm-9">
+         <%= @item.introduction %>
+        </div>
+       </div>
 
+       <div class = "row">
+        <label class = "col-sm-3">ジャンル名</label>
+        <div class = "col-sm-9">
+         <%= @item.genre.name %>
+        </div>
+       </div>
 
+       <div class = "row">
+        <label class = "col-sm-3">
+         税込み価格</br>
+         (税抜き価格)
+        </label>
+        <div class = "col-sm-9">
+         <%= @item.price %>円
+        </div>
+       </div>
 
+       <div class = "row">
+        <label class = "col-sm-3">販売ステータス</label>
+        <div class = "col-sm-9">
+          <% if @item.is_active %>販売中
+          <% else %>販売停止中
+          <% end %>
+        </div>
+       </div>
 
+       <div class = "row">
+        <%= link_to "編集する", edit_admin_item_path, class: "btn btn-success" %>
+       </div>
 
    </div>
   </div>
- </div>
-</main>
+ </div
+</main></main>
