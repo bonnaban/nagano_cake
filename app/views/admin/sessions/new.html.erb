@@ -7,6 +7,8 @@
 
 <%= form_with model: @admin, url: admin_session_path do |f| %>
 
+<%= render "admin/shared/error_messages", resource: resource %>
+
   <div class="field">
     メールアドレス
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -16,13 +18,6 @@
     パスワード
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
 
   <div class="actions">
     <%= f.submit "ログイン", class: "btn  btn-sm btn-primary" %>
