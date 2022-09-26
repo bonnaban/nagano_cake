@@ -1,0 +1,62 @@
+<main>
+  <h5>会員情報編集</h5>
+
+  <% if @customer.errors.any? %>
+  <h3><%= @customer.errors.count %>errors prohibited this obj</br>
+  from being saved:</h3>
+  <ul>
+  <% @customer.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+  </ul>
+  <% end %>
+
+  <div class = "container">
+    <div class = "row">
+
+      <%= form_with model: @customer, url: customers_information_path, method: :patch do |f| %>
+
+      <div class="field">
+        名前
+        (姓)
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+        (名)
+        <%= f.text_field :first_name, autocomplete: "first_name" %>
+      </div>
+
+      <div class="field">
+        フリガナ
+        (セイ)
+        <%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %>
+        (メイ)
+        <%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %>
+      </div>
+
+      <div class="field">
+        郵便番号
+        <%= f.number_field :postal_code, autocomplete: "postal_code" %>
+      </div>
+
+      <div class="field">
+        住所
+        <%= f.text_field :address, autocomplete: "address" %>
+      </div>
+
+      <div class="field">
+        電話番号
+        <%= f.telephone_field :telephone_number, autocomplete: "telephone_number" %>
+      </div>
+
+      <div class="field">
+        メールアドレス
+        <%= f.email_field :email, autocomplete: "email" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "新規登録", class: "btn btn-success" %>
+      </div>
+      <% end %>
+
+    </div>
+  </div>
+</main>

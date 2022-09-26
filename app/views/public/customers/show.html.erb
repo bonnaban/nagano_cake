@@ -1,41 +1,55 @@
 <main>
-  <p id="notice"></p>
-   <div class = "container px-5 px-sm-0">
-     <div class = "row">
-       <h3>マイページ</h3>
-       <h4><strong>登録情報</strong></h4><%= link_to "編集する", new_customer_session_path, class: 'btn btn-success' %>
+    <h5>マイページ</h5>
 
-       <table border = "1", bgcolor = "secondary">
-         <tr>
-           <td>氏名</td>
-           <td><%= @customer.last_name, @customer.first_name %></td>
-         </tr>
+    <div class="row">
+        <strong>登録情報</strong>
+        <%= link_to "編集する", customers_information_edit_path, class: 'btn btn-sm btn-success' %>
+    </div>
+    <p id="notice"></p>
+    <div class = "container">
+        <div class = "row">
+            <div class = "col-sm-8">
 
-         <tr>
-           <td>カナ</td>
-           <td><%= @customer.last_name_kana, @customer.first_name_kana %></td>
-         </tr>
-         
-         <tr>
-           <td>郵便番号</td>
-           <td><%= @customer.postal_code %></td>
-         </tr>
-         
-         <tr>
-           <td>住所</td>
-           <td><%= @customer.address %></td>
-         </tr>
-         
-         <tr>
-           <td>電話番号</td>
-           <td><%= @customer.telephone_number %></td>
-         </tr>
-         
-         <tr>
-           <td>メールアドレス</td>
-           <td><%= @customer.email %></td>
-         </tr>
-       </table>
-     </div>
-   </div>
+                <table  class = "col-sm-12 table">
+                  <tr>
+                    <td class = "col-sm-3" bgcolor = "#C0C0C0">氏名</td>
+                    <td class = "col-sm-9"><%= @customer.last_name %>　<%= @customer.first_name %></td>
+                  </tr>
+
+                  <tr>
+                    <td class = "col-sm-3" bgcolor = "#C0C0C0">カナ</td>
+                    <td class = "col-sm-9"><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></td>
+                  </tr>
+
+                  <tr>
+                    <td class = "col-sm-3" bgcolor = "#C0C0C0">郵便番号</td>
+                    <td class = "col-sm-9"><%= @customer.postal_code %></td>
+                  </tr>
+
+                  <tr>
+                    <td class = "col-sm-3" bgcolor = "#C0C0C0">住所</td>
+                    <td class = "col-sm-9"><%= @customer.address %></td>
+                  </tr>
+
+                  <tr>
+                    <td class = "col-sm-3" bgcolor = "#C0C0C0">電話番号</td>
+                    <td class = "col-sm-9"><%= @customer.telephone_number %></td>
+                  </tr>
+
+                  <tr>
+                    <td class = "col-sm-3" bgcolor = "#C0C0C0">メールアドレス</td>
+                    <td class = "col-sm-9"><%= @customer.email %></td>
+                  </tr>
+                </table>
+
+                <div class="field">
+                    <strong>配送先</strong><%= link_to "一覧を見る", new_customer_session_path, class: 'btn btn-sm btn-primary' %>
+                </div>
+
+                 <div class="field">
+                    <strong>注文履歴</strong><%= link_to "一覧を見る", new_customer_session_path, class: 'btn btn-sm btn-primary' %>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
