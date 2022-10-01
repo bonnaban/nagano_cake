@@ -6,6 +6,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @order = Order.page(params[:page])
   end
 
   def new
@@ -15,5 +16,11 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+  end
+
+  private
+
+  def address_params
+    params.require(:order).permit(:postal_code, :address, :name, :address, :postage, :billing_amount, :payment_method, :status)
   end
 end

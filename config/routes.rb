@@ -18,7 +18,7 @@ scope module: :public do
   get '/top' => 'homes#top', as:'top'
   get '/about' => 'homes#about', as:'about'
   #↑asはpath名を編集している
-  resources :address, only: [:edit, :index, :create, :update, :destroy]
+  resources :addresses, only: [:edit, :index, :create, :update, :destroy]
   resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
   delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
   #customers

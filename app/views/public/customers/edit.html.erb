@@ -1,15 +1,7 @@
 <main>
   <h5>会員情報編集</h5>
 
-  <% if @customer.errors.any? %>
-  <h3><%= @customer.errors.count %>errors prohibited this obj</br>
-  from being saved:</h3>
-  <ul>
-  <% @customer.errors.full_messages.each do |message| %>
-  <li><%= message %></li>
-  <% end %>
-  </ul>
-  <% end %>
+  <%= render 'public/error', error: @customer %>
 
   <div class = "container">
     <div class = "row">
@@ -53,8 +45,11 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "新規登録", class: "btn btn-success" %>
+        <%= f.submit "編集内容を保存", class: "btn btn-sm btn-success" %>
       </div>
+
+      <%= link_to "退会する", customers_confirmation_path, class: 'btn btn-sm btn-danger' %>
+
       <% end %>
 
     </div>
