@@ -45,9 +45,11 @@
         <td><%= item.genre.name %></td>
 
         <td>
-         <% if item.is_active %>販売中
-         <% else %>販売停止中
-         <% end %>
+          <% if item.is_active %><font color = "green">販売中</font>
+
+          <% else %><font color = "gray">販売停止中</font>
+
+          <% end %>
         </td>
 
       </tr>
