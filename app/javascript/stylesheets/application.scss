@@ -15,6 +15,14 @@ main{
   right: 0;
 }
 
+.table th {
+  border : 1px black solid !important;
+}
+
 .table td {
   border : 1px black solid !important;
+}
+
+.bgcolor {
+  background-color: #C0C0C0;
 }

@@ -2,10 +2,10 @@ class Order < ApplicationRecord
   has_one_attached :image
   belongs_to :customer
   has_many :order_details
-  
+
   enum payment_method:{
-    クレジットカード:0,
-    銀行振込:1
+    credit_card:0,
+    transfer:1
   }
 
   enum status:{
@@ -15,5 +15,5 @@ class Order < ApplicationRecord
     発送準備中:3,
     発送済み:4
   }
-  
+
 end

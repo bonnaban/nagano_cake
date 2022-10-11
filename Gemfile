@@ -61,3 +61,5 @@ gem 'devise'
 gem 'kaminari','~> 1.2.1'
 # RSpecのテスト用
 gem 'net-smtp'
+# enumの実装用
+gem "enum_help"

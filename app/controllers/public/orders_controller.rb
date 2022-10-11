@@ -10,6 +10,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def new
+    @order = Order.new
+    @customer = current_customer
   end
 
   def show
@@ -21,6 +23,6 @@ class Public::OrdersController < ApplicationController
   private
 
   def address_params
-    params.require(:order).permit(:postal_code, :address, :name, :address, :postage, :billing_amount, :payment_method, :status)
+    params.require(:order).permit(:customer_id, :postal_code, :address, :name, :postage, :billing_amount, :payment_method, :status)
   end
 end
