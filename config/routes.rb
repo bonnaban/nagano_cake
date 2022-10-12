@@ -28,9 +28,10 @@ scope module: :public do
   get '/customers/confirmation' => 'customers#confirmation'
   patch '/customers/withdrawal' => 'customers#withdrawal'
   resources :items, only: [:index, :show]
+  get '/orders/finish' => 'orders#finish'
   resources :orders, only: [:index, :new, :show, :create]
   post '/orders/confirm' => 'orders#confirm'
-  get '/orders/finish' => 'orders#finish'
+
 end
 
 namespace :admin do
