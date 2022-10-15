@@ -1,5 +1,5 @@
 <main>
-  <h4><%= @customer.last_name %>さんの会員詳細</h4>
+  <h4><%= @customer.last_name %>さんの会員情報編集</h4>
   <p id = "notice"></p>
   <div class = "container">
     <div class = "row">
@@ -49,7 +49,9 @@
             <%= f.label :is_active, "退会", {style: "display: inline-block;"} %>
           </div>
 
-          <%= f.submit "変更を保存", class: "btn btn-success" %>
+          <div class = "offset-sm-3">
+            <%= f.submit "変更を保存", class: "btn btn-success" %>
+          </div>
         </div>
         <% end %>
 

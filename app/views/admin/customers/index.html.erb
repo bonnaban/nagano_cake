@@ -3,16 +3,13 @@
   <p id = "notice"></p>
   <div class = "container">
     <div class = "row">
-      <div class = "col-sm-12 cd-8 col-lg-5 px-5 px-sm-0 mr-auto">
-
-       <table class = "col-sm-12" border = "2">
+       <table class = "col-sm-8 offset-sm-2" border = "2">
           <thead>
             <tr>
               <th bgcolor = "#C0C0C0">会員ID</th>
               <th bgcolor = "#C0C0C0">氏名</th>
               <th bgcolor = "#C0C0C0">メールアドレス</th>
               <th bgcolor = "#C0C0C0">ステータス</th>
-              <th  colspan = "4"></th>
             </tr>
           </thead>
           <tbody>
@@ -36,10 +33,12 @@
             <% end %>
           </tbody>
         </table>
-
-        <%= paginate @customer %>
-
       </div>
+
+      <div class = "col-sm-2 offset-sm-5">
+        <%= paginate @customer %>
+      </div>
+
     </div>
   </div>
 </main>

@@ -3,17 +3,12 @@
    <p id = "notice"></p>
    <div class = "container">
     <div class = "row">
-     <div class = "col-sm-12 cd-8 col-lg-5 px-5 px-sm-0 mr-auto">
+     <div class = "col-sm-9">
 
       <%= render 'admin/error', error: @genre %>
 
   <%= form_with model: @genre, url: admin_genre_path(@genre), method: :patch do |f| %>
-
-  <div class="field">
-  ジャンル名
-  <%= f.text_field :name, autofocus: true %>
-  <%= f.submit "変更を保存", class: "btn btn-success" %>
-  </div>
+  <%= render 'admin/genres/genre', text: "変更を保存", f: f %>
   <% end %>
 
    </div>

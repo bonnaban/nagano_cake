@@ -30,7 +30,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @order = Order.page(params[:page])
+    @customer = current_customer
+    @order = @customer.orders
+    @orders = Order.page(params[:page]).per(5)
   end
 
   def new
@@ -39,6 +41,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details.all
+    @total = @order_details.inject(0) { |sum, item| sum + item.sum_of_price }
   end
 
   def create

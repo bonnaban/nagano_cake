@@ -1,0 +1,82 @@
+<main>
+    <h5>注文履歴詳細</h5>
+    <p id="notice"></p>
+    <div class = "container">
+      <div class = "row">
+        <div class = "col-sm-6">
+          <h5>注文情報</h5>
+        </div>
+
+         <div class = "col-sm-6">
+          <h5>請求情報</h5>
+        </div>
+      </div>
+
+      <div class = "row">
+        <table class = "col-sm-6" border = "2">
+          <tr>
+            <td class = "col-sm-3" bgcolor = "#C0C0C0">注文日</td>
+            <td class = "col-sm-9"><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <tr>
+            <td class = "col-sm-3" bgcolor = "#C0C0C0">配送先</td>
+            <td class = "col-sm-9">
+                〒<%= @order.postal_code %></br>
+                <%= @order.address %></br>
+                <%= @order.name %>
+            </td>
+          </tr>
+          <tr>
+            <td class = "col-sm-3" bgcolor = "#C0C0C0">支払方法</td>
+            <td class = "col-sm-9"><%= @order.payment_method_i18n %></td>
+          </tr>
+          <tr>
+            <td class = "col-sm-3" bgcolor = "#C0C0C0">ステータス</td>
+            <td class = "col-sm-9"><%= @order.status %></td>
+          </tr>
+        </table>
+
+        <table class = "col-sm-3 ml-2" border = "2">
+          <tr>
+            <td class = "col-sm-6" bgcolor = "#C0C0C0">商品合計</td>
+            <td class = "col-sm-6"><%= @total.round.to_s(:delimited) %></td>
+          </tr>
+          <tr>
+            <td class = "col-sm-6" bgcolor = "#C0C0C0">配送料</td>
+            <td class = "col-sm-6"><%=  @order.postage %></td>
+          </tr>
+          <tr>
+            <td class = "col-sm-6" bgcolor = "#C0C0C0"><strong>ご請求額</strong></td>
+            <td class = "col-sm-6"><%= @order.billing_amount %></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class = "row">
+        <h5>注文内容</h5>
+      </div>
+
+      <div class = "row">
+        <table class = "col-sm-8" border = "2">
+          <thead bgcolor = "#C0C0C0">
+            <tr>
+              <th>商品</th>
+              <th>単価(税込)</th>
+              <th>個数</th>
+              <th>小計</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @order_details.each do |order_detail| %>
+            <tr>
+              <td><%= order_detail.item.name %></td>
+              <td><%= order_detail.item.taxin_price.to_s(:delimited) %></td>
+              <td><%= order_detail.amount %></td>
+              <td><%= order_detail.sum_of_price.to_s(:delimited) %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</main>
