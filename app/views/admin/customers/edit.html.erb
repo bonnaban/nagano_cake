@@ -1,45 +1,19 @@
 <main>
   <h4><%= @customer.last_name %>さんの会員情報編集</h4>
-  <p id = "notice"></p>
+  <%= render 'partial_template/error', error: @customer %>
   <div class = "container">
     <div class = "row">
       <div class = "col-sm-9">
-
-        <%= render 'admin/error', error: @customer %>
-
         <%= form_with model: @customer, url: admin_customer_path do |f| %>
+        
         <div class = "row">
           <div class = "col-sm-3">会員ID</div>
           <div class = "col-sm-9"><%= @customer.id %></div>
+        </div>
 
-          <div class = "col-sm-3">氏名</div>
-          <div class = "col-sm-4">
-            <%= f.text_field :last_name, class:"form-control", id:"last_name" %>
-          </div>
-          <div class = "col-sm-5">
-            <%= f.text_field :first_name, class:"form-control", id:"first_name" %>
-          </div>
+        <%= render 'partial_template/customer_edit', f: f %>
 
-          <div class = "col-sm-3">フリガナ</div>
-          <div class = "col-sm-4">
-            <%= f.text_field :last_name_kana, class:"form-control", id:"last_name_kana" %>
-          </div>
-          <div class = "col-sm-5">
-            <%= f.text_field :first_name_kana, class:"form-control", id:"first_name_kana" %>
-          </div>
-
-          <div class = "col-sm-3">郵便番号</div>
-          <div class = "col-sm-9"><%= f.number_field :postal_code, class:"form-control", id:"postal_code" %></div>
-
-          <div class = "col-sm-3">住所</div>
-          <div class = "col-sm-9"><%= f.text_field :address, class:"form-control", id:"address" %></div>
-
-          <div class = "col-sm-3">電話番号</div>
-          <div class = "col-sm-9"><%= f.telephone_field :telephone_number, class:"form-control", id:"telephone_number" %></div>
-
-          <div class = "col-sm-3">メールアドレス</div>
-          <div class = "col-sm-9"><%= f.email_field :email, class:"form-control", id:"email" %></div>
-
+        <div class = "row mt-2">
           <div class = "col-sm-3">会員ステータス</div>
           <div class = "col-sm-9">
             <%= f.radio_button :is_active, :false %>
@@ -48,6 +22,7 @@
             <%= f.radio_button :is_active, :true %>
             <%= f.label :is_active, "退会", {style: "display: inline-block;"} %>
           </div>
+        </div>
 
           <div class = "offset-sm-3">
             <%= f.submit "変更を保存", class: "btn btn-success" %>

@@ -1,9 +1,0 @@
-<% if error.errors.any? %>
-<h3><%= error.errors.count %>errors prohibited this obj</br>
-from being saved:</h3>
-<ul>
-<% error.errors.full_messages.each do |message| %>
-<li><%= message %></li>
-<% end %>
-</ul>
-<% end %>

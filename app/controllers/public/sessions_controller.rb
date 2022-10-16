@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-# before_action :customer_state, only: [:create]
+  before_action :customer_state, only: [:create]
 
   def after_sign_in_path_for(resource)
     top_path
@@ -21,6 +21,7 @@ def customer_state
   return if !@customer
   ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
   if @customer.valid_password?(params[:customer][:password]) && @customer.is_active == false
+    flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
   ## 【処理内容3】
     redirect_to new_customer_registration_path
   end

@@ -32,7 +32,7 @@
           </tr>
           <tr>
             <td class = "col-sm-3" bgcolor = "#C0C0C0">ステータス</td>
-            <td class = "col-sm-9"><%= @order.status %></td>
+            <td class = "col-sm-9"><%= @order.status_i18n %></td>
           </tr>
         </table>
 
@@ -47,7 +47,7 @@
           </tr>
           <tr>
             <td class = "col-sm-6" bgcolor = "#C0C0C0"><strong>ご請求額</strong></td>
-            <td class = "col-sm-6"><%= @order.billing_amount %></td>
+            <td class = "col-sm-6"><%= @order.billing_amount.round.to_s(:delimited) %></td>
           </tr>
         </table>
       </div>

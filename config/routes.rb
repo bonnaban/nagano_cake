@@ -31,7 +31,6 @@ scope module: :public do
   get '/orders/finish' => 'orders#finish'
   resources :orders, only: [:index, :new, :show, :create]
   post '/orders/confirm' => 'orders#confirm'
-
 end
 
 namespace :admin do

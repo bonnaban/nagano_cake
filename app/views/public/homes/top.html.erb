@@ -1,33 +1,43 @@
 <main>
-  <p id = "notice"></p>
+  <!--退会した際にメッセージを表示-->
+  <p><%= notice %></p>
   <div class = "container">
     <div class = "row">
-      <div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <div class = "col-sm-5 px-sm-0 mx-auto">
 
-        <div class = "cake">
-          <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;">
+        <div class = "background">
+          <div class = "background-content">
             ようこそ、ながのCAKEへ!</br>
             このサイトは、ケーキ販売のECサイトになります。</br>
             会員でない方も商品の閲覧はできますが、</br>
             購入には会員登録が必要になります。
           </div>
         </div>
-
         <h4>新着商品</h4>
+      </div>
+    </div>
 
+    <div class = "row">
+      <div class = "col-sm-9 offset-sm-3">
+        <div class = "row">
+          <% @items.each do |items| %>
+          <div class = "col-sm-3">
+            <%= link_to item_path(items) do %>
+            <div class = "card">
+              <%= image_tag items.image, :size =>'150x100' %>
+              <div class = "card-body"><%= items.name %></div>
+              <div class = "card-text">¥<%= items.taxin_price %></div>
+            </div>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class = "row">
+      <div class = "col-sm-3 offset-sm-9">
+        <%= link_to "全ての商品を見る>", items_path %>
       </div>
     </div>
   </div>
-</main>
-
-
-
-
-
-
-
-
-   </div>
-  </div>
- </div>
 </main>

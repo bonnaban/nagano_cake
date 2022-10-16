@@ -63,3 +63,5 @@ gem 'kaminari','~> 1.2.1'
 gem 'net-smtp'
 # enumの実装用
 gem "enum_help"
+# エラーメッセージの日本語化
+gem 'rails-i18n'

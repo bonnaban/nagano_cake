@@ -1,25 +1,24 @@
 <main>
-   <h3><strong>商品一覧</strong></h3><h5>(全<%= @item %>件)</h5>
-   <p id="notice"></p>
-   <div class = "container">
-     <div class = "row">
-
-         <% @items.each do |items| %>
-         <div class = "col-sm-3">
-
-            <%= link_to item_path(items) do %>
-            <div class = "card">
-               <%= image_tag items.image, :size =>'200x150' %>
-               <div class = "card-body"><%= items.name %></div>
-               <div class = "card-text">¥<%= items.taxin_price %></div>
-            </div>
-            <% end %>
-         </div>
-
-         <% end %>
-
-         <%= paginate @items %>
-
-     </div>
-   </div>
+  <h3><strong>商品一覧</strong></h3><h5>(全<%= @item %>件)</h5>
+  <p id="notice"></p>
+  <div class = "container">
+    <div class = "row">
+      <% @items.each do |items| %>
+      <div class = "col-sm-3">
+        <%= link_to item_path(items) do %>
+        <div class = "card">
+          <%= image_tag items.image, :size =>'200x150' %>
+          <div class = "card-body"><%= items.name %></div>
+          <div class = "card-text">¥<%= items.taxin_price %></div>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+    <div class = "row">
+      <div class = "col-sm-6 offset-sm-3">
+        <%= paginate @items %>
+      </div>
+    </div>
+  </div>
 </main>
