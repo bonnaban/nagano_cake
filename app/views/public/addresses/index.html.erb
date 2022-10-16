@@ -7,50 +7,37 @@
 
         <%= form_with model: @address, url: addresses_path, method: :post do |f| %>
 
-        <div class="field">
-          郵便番号(ハイフンなし)
-          <%= f.number_field :postal_code, autocomplete: "postal_code", :placeholder => "0000000" %>
-        </div>
-
-        <div class="field">
-          住所
-          <%= f.text_field :address, autocomplete: "address", :placeholder => "東京都渋谷区神園町0-0" %>
-        </div>
-
-        <div class="field">
-          宛名
-          <%= f.text_field :name, autocomplete: "name", :placeholder => "令和道子" %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "新規登録", class: "btn btn-success" %>
-        </div>
+        <%= render 'partial_template/addres_content', f: f, text: "新規登録" %>
         <% end %>
 
-        <table class = "col-sm-12" border = "2">
-          <thead>
-            <tr>
-              <th bgcolor = "#C0C0C0">郵便番号</th>
-              <th bgcolor = "#C0C0C0">住所</th>
-              <th bgcolor = "#C0C0C0">宛名</th>
-              <th bgcolor = "#C0C0C0"></th>
-              <th bgcolor = "#C0C0C0" colspan = "4"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @address1.each do |address1| %>
-            <tr>
-              <td><%= address1.postal_code %></td>
-              <td><%= address1.address %></td>
-              <td><%= address1.name %></td>
-              <td>
-                <%= link_to "編集する", edit_address_path(address1), class: 'btn btn-sm btn-success' %>
-                <%= link_to "削除する", address_path(address1), class: 'btn btn-sm btn-danger', method: :delete %>
-              </td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
+
+        <div class="row mt-2">
+          <table class = "col-sm-12" border = "2">
+            <thead>
+              <tr>
+                <th bgcolor = "#C0C0C0">郵便番号</th>
+                <th bgcolor = "#C0C0C0">住所</th>
+                <th bgcolor = "#C0C0C0">宛名</th>
+                <th bgcolor = "#C0C0C0"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @address1.each do |address1| %>
+              <tr>
+                <td><%= address1.postal_code %></td>
+                <td><%= address1.address %></td>
+                <td><%= address1.name %></td>
+                <td>
+                  <div  class = "text-center mb-2 mt-2">
+                  <%= link_to "編集する", edit_address_path(address1), class: 'btn btn-sm btn-success' %>
+                  <%= link_to "削除する", address_path(address1), class: 'btn btn-sm btn-danger', method: :delete %>
+                  </div>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
 
       </div>
     </div>

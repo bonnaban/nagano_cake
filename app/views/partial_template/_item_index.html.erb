@@ -1,0 +1,13 @@
+<div class = "row">
+  <% item.each do |items| %>
+  <div class = "col-sm-3">
+    <%= link_to item_path(items) do %>
+    <div class = "card">
+      <%= image_tag items.image, :size =>text %>
+      <div class = "card-body"><%= items.name %></div>
+      <div class = "card-text">¥<%= items.taxin_price %></div>
+    </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>

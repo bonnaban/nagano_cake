@@ -19,19 +19,7 @@
 
     <div class = "row">
       <div class = "col-sm-9 offset-sm-3">
-        <div class = "row">
-          <% @items.each do |items| %>
-          <div class = "col-sm-3">
-            <%= link_to item_path(items) do %>
-            <div class = "card">
-              <%= image_tag items.image, :size =>'150x100' %>
-              <div class = "card-body"><%= items.name %></div>
-              <div class = "card-text">¥<%= items.taxin_price %></div>
-            </div>
-            <% end %>
-          </div>
-          <% end %>
-        </div>
+        <%= render 'partial_template/item_index', item: @items, text: '150x100' %>
       </div>
     </div>
     <div class = "row">
