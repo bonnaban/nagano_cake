@@ -2,6 +2,12 @@
 
 class Admin::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :logout_customer, only: [:new]
+
+  def after_sign_out_path_for(resource)
+    new_admin_session_path
+  end
+
 
   # GET /resource/sign_in
   # def new
@@ -18,10 +24,16 @@ class Admin::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  ##  adminのログイン画面に遷移した際にcustomerを強制ログアウトする
+  def logout_customer
+    if customer_signed_in?
+      reset_session
+    end
+  end
 end

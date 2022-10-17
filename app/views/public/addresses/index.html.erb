@@ -21,15 +21,15 @@
               </tr>
             </thead>
             <tbody>
-              <% @address1.each do |address1| %>
+              <% @addresses.each do |addresses| %>
               <tr>
-                <td><%= address1.postal_code %></td>
-                <td><%= address1.address %></td>
-                <td><%= address1.name %></td>
+                <td><%= addresses.postal_code %></td>
+                <td><%= addresses.address %></td>
+                <td><%= addresses.name %></td>
                 <td>
                   <div  class = "text-center mb-2 mt-2">
-                  <%= link_to "編集する", edit_address_path(address1), class: 'btn btn-sm btn-success' %>
-                  <%= link_to "削除する", address_path(address1), class: 'btn btn-sm btn-danger', method: :delete %>
+                  <%= link_to "編集する", edit_address_path(addresses), class: 'btn btn-sm btn-success' %>
+                  <%= link_to "削除する", address_path(addresses), class: 'btn btn-sm btn-danger', method: :delete %>
                   </div>
                 </td>
               </tr>

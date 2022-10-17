@@ -4,25 +4,31 @@ class Public::OrdersController < ApplicationController
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
 
     @order = Order.new(order_params)
-    if params[:order][:select_address] == "0"
+    if params[:select_address] == "0"
       @order.name = current_customer.last_name + current_customer.first_name
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.postage = 800
       @order.billing_amount = @total + @order.postage
-    elsif params[:order][:select_address] == "1"
+    elsif params[:select_address] == "1"
       @address = Address.find(params[:order][:address_id])
       @order.name = @address.name
       @order.postal_code = @address.postal_code
       @order.address = @address.address
       @order.postage = 800
       @order.billing_amount = @total + @order.postage
-    elsif params[:order][:select_address] == "2"
+    elsif params[:select_address] == "2"
       @order.name = params[:order][:name]
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
       @order.postage = 800
       @order.billing_amount = @total + @order.postage
+
+      if @order.name == "" || @order.postal_code == "" || @order.address == ""
+        flash[:notice] = '新しいお届け先が正しく入力されていません。'
+        @customer = current_customer
+        render :new
+      end
     end
   end
 
@@ -30,8 +36,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @customer = current_customer
-    @order = @customer.orders
+    @order = current_customer.orders
     @orders = Order.page(params[:page]).per(5)
   end
 

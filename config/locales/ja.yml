@@ -32,3 +32,5 @@ ja: # 日本語の設定を行う
         name: "宛名"
         postal_code: "郵便番号"
         address: "住所"
+      genre:
+        name: "ジャンル名"

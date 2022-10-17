@@ -1,11 +1,16 @@
 class Public::AddressesController < ApplicationController
   def edit
     @address = Address.find(params[:id])
+    if @address.customer_id == current_customer
+      render :edit
+    else
+      redirect_to addresses_path
+    end
   end
 
   def index
     @address = Address.new
-    @address1 = Address.page(params[:page])
+    @addresses = current_customer.addresses
   end
 
   def create
