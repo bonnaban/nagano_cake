@@ -18,25 +18,27 @@
         </thead>
 
         <tbody>
-          <% @orders.each do |f| %>
-          <tr>
-            <td>
-              <%= link_to admin_order_path(f) do %>
-              <%= f.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-              <% end %>
-            </td>
-            <td><%= f.customer.last_name + f.customer.first_name %></td>
+          <% @orders.each do |order| %>
+            <tr>
+              <td>
+                <%= link_to admin_order_path(order) do %>
+                  <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+                <% end %>
+              </td>
+              <td>
+                <%= order.customer.last_name + order.customer.first_name %>
+              </td>
 
-            <td>
-            <% @sum = 0 %>
-            <% f.order_details.each do |order_detail| %>
-            <% @sum = @sum + order_detail.amount %>
-            <% end %>
-            <%= @sum %>
-            </td>
+              <td>
+                <% @sum = 0 %>
+                <% order.order_details.each do |order_detail| %>
+                  <% @sum = @sum + order_detail.amount %>
+                <% end %>
+                <%= @sum %>
+              </td>
 
-            <td><%= f.status_i18n %></td>
-          </tr>
+              <td><%= order.status_i18n %></td>
+            </tr>
           <% end %>
         </tbody>
       </table>

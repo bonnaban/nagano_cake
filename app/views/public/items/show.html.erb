@@ -1,36 +1,37 @@
 <main>
   <p id="notice"></p>
   <div class = "container">
-    <div class = "row">
-      <div class = "col-sm-3 offset-sm-3">
-        <%= image_tag @item.image, :size =>'200x150' %>
-      </div>
-
-      <div class = "col-sm-6">
-        <div class = "row">
-          <strong><%= @item.name %></strong>
+    <%= render 'partial_template/error', error: @item %>
+      <div class = "row">
+        <div class = "col-sm-3 offset-sm-3">
+          <%= image_tag @item.image, :size =>'200x150' %>
         </div>
 
-        <div class = "row mt-2">
-          <%= @item.introduction %>
-        </div>
-
-        <div class = "row mt-2">
-          <strong>¥<%= @item.taxin_price %></strong>(税込み)
-        </div>
-
-        <div class = "row mt-2">
-          <div class = "col-sm-3">
-            <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
-            <%= f.select :amount, *[1..10], include_blank: "個数選択" %>
-            <%= f.hidden_field :item_id, value: @item.id %>
+        <div class = "col-sm-6">
+          <div class = "row">
+            <strong><%= @item.name %></strong>
           </div>
-          <div class = "col-sm-3">
-            <%= f.submit "カートに入れる", class: "btn btn-sm btn-success" %>
+
+          <div class = "row mt-2">
+            <%= @item.introduction %>
           </div>
+
+          <div class = "row mt-2">
+            <strong>¥<%= @item.taxin_price %></strong>(税込み)
+          </div>
+
+          <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+            <div class = "row mt-2">
+              <div class = "col-sm-3">
+                <%= f.select :amount, *[1..10], include_blank: "個数選択" %>
+                <%= f.hidden_field :item_id, value: @item.id %>
+              </div>
+              <div class = "col-sm-3">
+                <%= f.submit "カートに入れる", class: "btn btn-sm btn-success" %>
+              </div>
+            </div>
           <% end %>
         </div>
       </div>
-    </div>
   </div>
 </main>

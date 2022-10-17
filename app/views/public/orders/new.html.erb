@@ -45,18 +45,16 @@
         </div>
       </div>
 
-      <div class = "row">
+      <div class = "row mt-2">
         <div class = "col-sm-5 ml-5 pl-4">
           住所
         </div>
         <div class = "col-sm-5">
-          <div class = "form-group">
           <%= f.text_field :address, autocomplete: "address", :placeholder => "東京都渋谷区神園町0-0", class: "form-control" %>
-          </div>
         </div>
       </div>
 
-      <div class = "row">
+      <div class = "row mt-2">
         <div class = "col-sm-5 ml-5 pl-4">
           宛名
         </div>
@@ -64,9 +62,7 @@
           <%= f.text_field :name, autocomplete: "name", :placeholder => "令和道子" %>
         </div>
       </div>
-
         <%= f.submit "確認画面へ進む", class: "btn btn-sm btn-primary offset-sm-6 mt-4" %>
-
       <% end %>
       </div>
     </div>

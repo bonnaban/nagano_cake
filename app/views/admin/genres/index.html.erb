@@ -5,7 +5,7 @@
     <div class = "row">
      <div class = "col-sm-9">
 
-      <%= render 'admin/error', error: @genre %>
+      <%= render 'partial_template/error', error: @genre %>
 
       <%= form_with model: @genre, url: admin_genres_path do |f| %>
       <%= render 'admin/genres/genre', text: "新規登録", f: f %>

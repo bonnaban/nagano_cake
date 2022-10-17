@@ -3,23 +3,21 @@
   <%= render 'partial_template/error', error: @customer %>
 
   <div class = "container">
-    <div class = "row">
-      <div class = "col-sm-9">
-        <%= form_with model: @customer, url: customers_information_path, method: :patch do |f| %>
-
-        <%= render 'partial_template/customer_edit', f: f %>
+    <%= form_with model: @customer, url: customers_information_path, method: :patch do |f| %>
+      <div class = "row">
+        <div class = "col-sm-9">
+          <%= render 'partial_template/customer_edit', f: f %>
+        </div>
       </div>
-    </div>
 
-    <div class="row mt-2">
-      <div class = "col-sm-3 offset-sm-3">
-        <%= f.submit "編集内容を保存", class: "btn btn-sm btn-success" %>
-        <% end %>
+      <div class="row mt-2">
+        <div class = "col-sm-3 offset-sm-3">
+          <%= f.submit "編集内容を保存", class: "btn btn-sm btn-success" %>
+        </div>
+        <div class = "col-sm-3">
+          <%= link_to "退会する", customers_confirmation_path, class: 'btn btn-sm btn-danger' %>
+        </div>
       </div>
-      <div class = "col-sm-3">
-        <%= link_to "退会する", customers_confirmation_path, class: 'btn btn-sm btn-danger' %>
-      </div>
-    </div>
-
+    <% end %>
   </div>
 </main>

@@ -4,12 +4,11 @@
   <div class = "container">
     <div class = "row">
       <div class = "col-sm-8">
+        <%= render 'partial_template/error', error: @address %>
 
         <%= form_with model: @address, url: addresses_path, method: :post do |f| %>
-
-        <%= render 'partial_template/addres_content', f: f, text: "新規登録" %>
+          <%= render 'partial_template/addres_content', f: f, text: "新規登録" %>
         <% end %>
-
 
         <div class="row mt-2">
           <table class = "col-sm-12" border = "2">
