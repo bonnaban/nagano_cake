@@ -10,14 +10,10 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     if @order.update(order_params)
-      if @order.status == "shipped"
-        redirect_to admin_order_path(@order)
-      elsif @order.status == "confirming"
+      if @order.status == "confirming"
         @order.order_details.update(production_status: 1)
-        redirect_to admin_order_path(@order)
-      else
-        redirect_to admin_order_path(@order)
       end
+      redirect_to admin_order_path(@order)
     else
       redirect_to admin_order_path(@order)
     end
